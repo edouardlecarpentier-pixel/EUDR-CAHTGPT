@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pydantic
+pystac-client
+shapely
+geojson
+python-dotenv
+jinja2
+requests

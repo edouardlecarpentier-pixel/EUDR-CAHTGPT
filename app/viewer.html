@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EUDR Visual Checker – Rapport</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <h1>EUDR Visual Checker</h1>
+  <div id="map1" style="height:400px;"></div>
+  <div id="map2" style="height:400px;"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const pre = {{ pre2021.tile if pre2021 else 'null' | safe }};
+    const rec = {{ recent.tile if recent else 'null' | safe }};
+    function makeMap(id, tilejson){
+      const map = L.map(id).setView([{{ centroid_lat }}, {{ centroid_lon }}], 13);
+      if(tilejson && tilejson.tiles){L.tileLayer(tilejson.tiles[0]).addTo(map);}
+    }
+    makeMap('map1', pre);
+    makeMap('map2', rec);
+  </script>
+</body>
+</html>

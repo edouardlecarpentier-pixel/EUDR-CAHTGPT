@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: eudr-api
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: STAC_ENDPOINT
+        value: https://earth-search.aws.element84.com/v1
+      - key: TITILER_ENDPOINT
+        value: http://titiler:8000
+      - key: RECENT_DAYS
+        value: 180
+      - key: MAX_CLOUD
+        value: 20

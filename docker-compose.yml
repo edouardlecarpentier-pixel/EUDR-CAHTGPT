@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  api:
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - titiler
+  titiler:
+    image: ghcr.io/developmentseed/titiler:latest
+    environment:
+      - WORKERS_PER_CORE=1
+    ports:
+      - "8001:8000"
